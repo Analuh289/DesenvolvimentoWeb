@@ -1,0 +1,118 @@
+document.addEventListener('DOMContentLoaded', function () {
+    let botaoAdicionar = document.getElementById('adicionar');
+    let botaoLimpar = document.getElementById('limpar');
+    let botaoRelatorio = document.getElementById('relatorio');
+
+    let dados = {
+        nomeEmpregado: [],
+        salarioEmpregado: []
+    };
+
+    // Função para calcular o Salário do Empregado
+    function calcularSalario(pecas) {
+        let valorPorPeca = 0;
+
+        if (pecas >= 1 && pecas <= 200) {
+            valorPorPeca = 2.00;
+        } else if (pecas >= 201 && pecas <= 400) {
+            valorPorPeca = 2.30;
+        } else if (pecas > 400) {
+            valorPorPeca = 2.50;
+        }
+
+        return pecas * valorPorPeca;
+    }
+
+    // Função auxiliar para cadastrar o empregado atual do formulário
+    function cadastrarEmpregado() {
+        let nome = document.getElementById('nome').value.trim();
+        let pecasInput = document.getElementById('pecas').value.trim();
+        let pecas = Number(pecasInput);
+
+        // Consistência 1: Campos obrigatórios
+        if (nome === '' || pecasInput === '') {
+            return false;
+        }
+
+        // Consistência 2: Peças > 0
+        if (isNaN(pecas) || pecas <= 0) {
+            alert('O número de peças fabricadas deverá ser maior que zero!');
+            return false;
+        }
+
+        let salarioCalculado = calcularSalario(pecas);
+
+        dados.nomeEmpregado.push(nome);
+        dados.salarioEmpregado.push(salarioCalculado);
+
+        // Limpa formulário após cadastrar
+        document.getElementById('nome').value = '';
+        document.getElementById('pecas').value = '';
+
+        return true;
+    }
+
+    // Botão Adicionar
+    botaoAdicionar.addEventListener('click', function () {
+        let nome = document.getElementById('nome').value.trim();
+        let pecasInput = document.getElementById('pecas').value.trim();
+
+        if (nome === '' || pecasInput === '') {
+            alert('Por favor, preencha o Nome e o Número de Peças!');
+            return;
+        }
+
+        if (cadastrarEmpregado()) {
+            let ultimoIndice = dados.nomeEmpregado.length - 1;
+            document.getElementById('saida').innerHTML = `
+                <p style="color: green;"><strong>Empregado ${dados.nomeEmpregado[ultimoIndice]} cadastrado!</strong><br>
+                Salário: R$ ${dados.salarioEmpregado[ultimoIndice].toFixed(2)}</p>
+            `;
+            document.getElementById('nome').focus();
+        }
+    });
+
+    // Botão Exibir Relatório (Lista desordenada + Total gasto)
+    botaoRelatorio.addEventListener('click', function () {
+        // Se houver dados no formulário ainda não adicionados, cadastra primeiro
+        let nome = document.getElementById('nome').value.trim();
+        let pecasInput = document.getElementById('pecas').value.trim();
+
+        if (nome !== '' && pecasInput !== '') {
+            cadastrarEmpregado();
+        }
+
+        // Verifica se há dados cadastrados
+        if (dados.nomeEmpregado.length === 0) {
+            alert('Nenhum empregado foi cadastrado ainda! Preencha os campos e adicione um empregado.');
+            return;
+        }
+
+        let totalGasto = 0;
+        let htmlRelatorio = '<h3>Relatório de Salários</h3>';
+        htmlRelatorio += '<ul>';
+
+        // Monta a lista desordenada (<ul>)
+        for (let i = 0; i < dados.nomeEmpregado.length; i++) {
+            let nomeEmp = dados.nomeEmpregado[i];
+            let salarioEmp = dados.salarioEmpregado[i];
+
+            totalGasto += salarioEmp;
+
+            htmlRelatorio += `<li><strong>Nome:</strong> ${nomeEmp} - <strong>Salário:</strong> R$ ${salarioEmp.toFixed(2)}</li>`;
+        }
+
+        htmlRelatorio += '</ul>';
+        htmlRelatorio += `<p><strong>Total gasto em salários pela empresa: R$ ${totalGasto.toFixed(2)}</strong></p>`;
+
+        document.getElementById('saida').innerHTML = htmlRelatorio;
+    });
+
+    // Botão Novo / Limpar
+    botaoLimpar.addEventListener('click', function () {
+        document.getElementById('nome').value = '';
+        document.getElementById('pecas').value = '';
+        document.getElementById('saida').innerHTML = '';
+        document.getElementById('nome').focus();
+    });
+});

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo01</title>
+</head>
+<body>
+    <button>Clique Aqui</button>
+    <style>
+        button {
+            background-color: aqua;
+            font-size: large;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        let button = Exemplo01.querySelector("button");
+        button.onclick = function(){
+            let nome = prompt("Qual é o seu nome?");
+            alert("Olá " + nome.toUpperCase() + ", muito prazer em te ver!")
+        }
+    </script>
+</body>
+</html>

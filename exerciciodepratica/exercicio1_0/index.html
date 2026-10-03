@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo contra o Computador</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="card">
+        <h1>Jogo contra o Computador</h1>
+
+        <div class="campo">
+            <label for="j1">Jogada do Jogador:</label>
+            <input type="text" id="j1" placeholder="pedra, papel ou tesoura">
+        </div>
+
+        <div class="campo">
+            <label for="j2">Jogada do Computador:</label>
+            <input type="text" id="j2" placeholder="pedra, papel ou tesoura">
+        </div>
+
+        <button onclick="jogarRodada()">Jogar Rodada</button>
+
+        <h2 id="vencedor"></h2>
+        <p id="mensagem"></p>
+
+        <script src="ex.js"></script>
+    </div>
+    
+</body>
+</html>

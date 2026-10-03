@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<head>
+  <title>JavaScript Exemplo 3</title>
+  <style>
+    button {
+      font-family: "helvetica neue", helvetica, sans-serif;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-align: center;
+      border: 2px solid rgb(200 200 0 / 0.6);
+      background: rgba(0, 217, 217, 0.6);
+      color: rgb(100 0 0 / 1);
+      box-shadow: 1px 1px 2px rgb(0 0 200 / 0.4);
+      border-radius: 10px;
+      padding: 3px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button> Jogador 1: Pedro </button>
+  <script>
+    let botao = document.querySelector("button");    
+    botao.addEventListener("click", atualizarNome);    
+    function atualizarNome() {
+      let nome = prompt("Digite um novo nome");
+      if (nome != null) {
+         alert("O NOME SERÁ ALTERADO !");
+         botao.textContent = "Jogador 1: " + nome;
+
+      }
+    }
+  </script>
+</body>

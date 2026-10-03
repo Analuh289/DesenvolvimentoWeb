@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo Pedra, Papel e Tesoura</title>
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+  <div class="card">
+    <h1>Pedra, Papel ou Tesoura</h1>
+
+    <div class="campo">
+      <label for="j1">Jogada do Jogador 1:</label>
+      <input type="text" id="j1" placeholder="pedra, papel ou tesoura">
+    </div>
+
+    <div class="campo">
+      <label for="j2">Jogada do Jogador 2:</label>
+      <input type="text" id="j2" placeholder="pedra, papel ou tesoura">
+    </div>
+
+    <!-- Chamando a função diretamente pelo evento onclick -->
+    <button onclick="jogarRodada()">Jogar Rodada</button>
+
+    <!-- Áreas onde o resultado e o vencedor serão exibidos -->
+    <h2 id="vencedor"></h2>
+    <p id="mensagem"></p>
+  </div>
+
+  <script src="ex.js"></script>
+</body>
+</html>

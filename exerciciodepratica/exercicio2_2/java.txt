@@ -1,0 +1,94 @@
+document.addEventListener('DOMContentLoaded', function () {
+    let vetCidades = ['BELO HORIZONTE', 'SÃO PAULO', 'RIO DE JANEIRO', 'SALVADOR', 'CURITIBA'];
+
+    let botaoCalcular = document.getElementById('calcular');
+    let botaoLimpar = document.getElementById('novo');
+    let botaoRelatorio = document.getElementById('relatorio');
+
+    let dados = {
+        nomeHospede: [],
+        vlrHospedagem: []
+    };
+
+    // Função de cálculo exigida pelo exercício
+    function calcularConta(diaEntrada, diaSaida, tipoQuarto) {
+        let valorDiaria = 0;
+
+        if (tipoQuarto === 'STANDARD') {
+            valorDiaria = 120;
+        } else if (tipoQuarto === 'LUXO') {
+            valorDiaria = 150;
+        } else if (tipoQuarto === 'SUPER-LUXO') {
+            valorDiaria = 180;
+        }
+
+        let numDiarias = diaSaida - diaEntrada;
+        return numDiarias * valorDiaria;
+    }
+
+    // Ação do Botão Calcular
+    botaoCalcular.addEventListener('click', function () {
+        let nome = document.getElementById('nome').value.trim();
+        let diaEntrada = Number(document.getElementById('dia_entrada').value);
+        let diaSaida = Number(document.getElementById('dia_saida').value);
+        let tipoQuarto = document.getElementById('tipo_quarto').value;
+        let nomeCidade = document.getElementById('nome_cidade').value.trim().toUpperCase();
+
+        if (nome === '') {
+            alert('Por favor, informe o nome do hóspede!');
+            return;
+        }
+
+        if (diaSaida <= diaEntrada || isNaN(diaEntrada) || isNaN(diaSaida)) {
+            alert('O Dia de Saída deverá ser maior que o Dia de Entrada!');
+            return;
+        }
+
+        if (!vetCidades.includes(nomeCidade)) {
+            alert('Cidade inválida! As opções permitidas são: ' + vetCidades.join(', '));
+            return;
+        }
+
+        let totalConta = calcularConta(diaEntrada, diaSaida, tipoQuarto);
+
+        dados.nomeHospede.push(nome);
+        dados.vlrHospedagem.push(totalConta);
+
+        document.getElementById('vlrConta').innerText = `R$ ${totalConta.toFixed(2)}`;
+    });
+
+    // Ação do Botão Relatório
+    botaoRelatorio.addEventListener('click', function () {
+        if (dados.vlrHospedagem.length === 0) {
+            alert('Nenhuma conta foi cadastrada ainda!');
+            return;
+        }
+
+        let soma = 0;
+        for (let i = 0; i < dados.vlrHospedagem.length; i++) {
+            soma += dados.vlrHospedagem[i];
+        }
+        let media = soma / dados.vlrHospedagem.length;
+
+        let relatorioHTML = `<br><strong>Relatório - Média das Contas: R$ ${media.toFixed(2)}</strong><br><ul>`;
+        for (let i = 0; i < dados.vlrHospedagem.length; i++) {
+            if (dados.vlrHospedagem[i] >= media) {
+                relatorioHTML += `<li><strong>${dados.nomeHospede[i]}</strong>: R$ ${dados.vlrHospedagem[i].toFixed(2)}</li>`;
+            }
+        }
+        relatorioHTML += '</ul>';
+
+        document.getElementById('saidaRelatorio').innerHTML = relatorioHTML;
+    });
+
+    // Ação do Botão Novo (Limpar)
+    botaoLimpar.addEventListener('click', function () {
+        document.getElementById('nome').value = '';
+        document.getElementById('dia_entrada').value = '';
+        document.getElementById('dia_saida').value = '';
+        document.getElementById('tipo_quarto').selectedIndex = 0;
+        document.getElementById('nome_cidade').value = '';
+        document.getElementById('vlrConta').innerText = '';
+        document.getElementById('saidaRelatorio').innerHTML = '';
+    });
+});

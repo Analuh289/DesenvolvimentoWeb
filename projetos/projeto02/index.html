@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Vendas e Estoque do dia</title>
+    <link real="stylesheet" href="main.css">
+</head>
+<body>
+    
+    <header>
+        <h1>Controle de Vendas e Estoque do dia</h1>
+    </header>
+
+    <main class="container">
+
+        <!-- Painel Resumo do Dia -->
+         <section class="cards">
+            <div class="card">
+                <h3>Vendas do dia (Hoje)</h3>
+                <p id="total-vendas-qtd">0</p>
+            </div>
+            <div class="card">
+                <h3>Faturamento do dia (Hoje)</h3>
+                <p id="total-vendas-valor">R$ 0,00</p>
+            </div>
+         </section>
+
+         <div class="grid-layout">
+      
+      <!-- Cadastro de Produtos -->
+      <section class="painel">
+        <h2>Cadastrar Produto</h2>
+        <form id="form-produto">
+          <input type="text" id="prod-nome" placeholder="Nome do Produto" required />
+          <input type="number" step="0.01" id="prod-preco" placeholder="Preço (R$)" required />
+          <input type="number" id="prod-qtd" placeholder="Quantidade em Estoque" required />
+          <button type="submit">Adicionar ao Estoque</button>
+        </form>
+
+        <h2>Estoque Atual</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th>Estoque</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-estoque"></tbody>
+        </table>
+      </section>
+
+      <!-- Registro de Vendas -->
+      <section class="painel">
+        <h2>Registrar Venda</h2>
+        <form id="form-venda">
+          <select id="venda-produto" required>
+            <option value="">Selecione um produto...</option>
+          </select>
+          <input type="number" id="venda-qtd" min="1" value="1" placeholder="Quantidade" required />
+          <button type="submit" class="btn-venda">Confirmar Venda</button>
+        </form>
+
+        <h2>Vendas Realizadas Hoje</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Produto</th>
+              <th>Qtd</th>
+              <th>Total</th>
+              <th>Hora</th>
+            </tr>
+          </thead>
+          <tbody id="tabela-vendas"></tbody>
+        </table>
+      </section>
+
+    </div>
+
+  </main>
+
+  <script src="java.js"></script>
+    </main>
+</body>
+</html>

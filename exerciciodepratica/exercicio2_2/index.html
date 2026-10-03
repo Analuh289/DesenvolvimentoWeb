@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de contas do hotel</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div class="formulario">
+        <label for="nome">Nome do hóspede...: </label>
+        <input type="text" id="nome">
+    </div>
+
+    <div class="formulario">
+        <label for="dia_entrada">Dia da entrada...: </label>
+        <input type="number" id="dia_entrada" min="1" max="31">
+    </div>
+
+    <div class="formulario">
+        <label for="dia_saida">Dia da saída...: </label>
+        <input type="number" id="dia_saida" min="1" max="31">
+    </div>
+
+    <div class="formulario">
+        <label for="tipo_quarto">Tipo de quarto...: </label>
+        <select name="tipo_quarto" id="tipo_quarto">
+            <option value="STANDARD">STANDARD</option>
+            <option value="LUXO">LUXO</option>
+            <option value="SUPER-LUXO">SUPER-LUXO</option>
+        </select>
+    </div>
+
+    <div class="formulario">
+        <label for="nome_cidade">Nome da cidade...: </label>
+        <input type="text" id="nome_cidade">
+    </div>
+
+    <div class="formulario">
+        <label for="vlrConta">Valor da conta...: </label>
+        <label id="vlrConta" class="saida"></label>
+    </div>
+
+    <button id="calcular">Calcular</button>
+    <button id="novo">Novo</button>
+    <button id="relatorio">Relatório Contas Acima da Média</button>
+
+    <!-- Área reservada para exibir o relatório final -->
+    <div id="saidaRelatorio" class="formulario"></div>
+
+    <script src="java.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Comissão de Vendedores</title>
+    <link rel="stylesheet" href="main.css">
+    <script src="java.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Controle de Comissão de Vendedores</h2>
+
+        <div class="formulario">
+            <label for="nome">Nome do vendedor...:</label>
+            <input type="text" id="nome">
+        </div>
+
+        <div class="formulario">
+            <label for="vendas">Valor da comissão...:</label>
+            <input type="number" id="vendas" placeholder="Digite o valor das vendas">
+        </div>
+
+        <div class="botoes">
+           <button type="button" id="adicionar">Adicionar Vendedor...:</button>
+        </div>
+
+        <div class="resultado">
+            <p>
+                <strong>Total Geral de Comissoes...: </strong>
+                R$ <span id="total_comissao">0.00</span>
+            </p>
+
+             <p>
+                <strong>Média das Comissões:</strong>
+                R$ <span id="mediaComissoes">0,00</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

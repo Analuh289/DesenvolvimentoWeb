@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.container {
+    max-width: 500px;
+}
+
+.formulario {
+    margin-bottom: 12px;
+}
+
+.formulario label {
+    display: inline-block;
+    width: 180px;
+}
+
+.formulario input {
+    padding: 4px;
+}
+
+.botoes {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.botoes button {
+    padding: 6px 12px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+#saida {
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
+}

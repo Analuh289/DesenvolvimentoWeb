@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de Login e Senha</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+
+<div class="container">
+    <h2>Gerador de Acesso</h2>
+    
+    <div class="campo">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" placeholder="Ex: jose maria alves dos santos">
+        <div id="mensagemErro" class="erro"></div>
+    </div>
+
+    <!-- O botão chama diretamente a função pelo onclick -->
+    <button type="button" onclick="gerarAcesso()">Gerar Login e Senha</button>
+
+    <div class="resultado" id="painelResultado">
+        <p><strong>Login:</strong> <span id="resLogin"></span></p>
+        <p><strong>Senha:</strong> <span id="resSenha"></span></p>
+    </div>
+</div>
+
+<script src="javasc.js"></script>
+</body>
+</html>
